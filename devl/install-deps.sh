@@ -17,7 +17,7 @@ is_mac_host() {
 if [ is_mac_host ]; then
     echo "🐰 darwin"
 
-    ansible-galaxy install -r requirements.yml
+    ansible-galaxy install -r galaxy-requirements.yml
     ansible-playbook plays/mac-dev.yml
 else
 
@@ -34,7 +34,7 @@ else
     $sudo apt update -y && $sudo apt install python-minimal python-pip -y
     pip install ansible
 
-    ansible-galaxy install -r requirements.yml
+    ansible-galaxy install -r galaxy-requirements.yml
     ansible-playbook plays/ubuntu-dev.yml
 fi
 
