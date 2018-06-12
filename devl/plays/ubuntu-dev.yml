@@ -6,7 +6,7 @@
     - joshualund.golang
     - zzet.rbenv
     - role: avanov.pyenv
-      pyenv_path: "{{ home }}/pyenv"
+      pyenv_path: "{{ home }}/.pyenv"
       pyenv_owner: "{{ instance_owner }}"
       pyenv_update_git_install: yes
       pyenv_enable_autocompletion: yes
