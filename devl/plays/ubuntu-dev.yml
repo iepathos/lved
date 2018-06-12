@@ -1,0 +1,21 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - mongrelion.docker
+    - joshualund.golang
+    - zzet.rbenv
+    - role: avanov.pyenv
+      pyenv_path: "{{ home }}/pyenv"
+      pyenv_owner: "{{ instance_owner }}"
+      pyenv_update_git_install: yes
+      pyenv_enable_autocompletion: yes
+      pyenv_python_versions:
+        - "2.7.10"
+      pyenv_virtualenvs:
+        - venv_name: "headspin"
+          py_version: "2.7.10"
+
+  tasks:
+    - name: Install Sublime Text
+      shell: echo "wtf"

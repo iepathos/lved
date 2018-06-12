@@ -1,0 +1,11 @@
+---
+# galaxy
+- src: mongrelion.docker
+
+- src: joshualund.golang
+
+- src: zzet.rbenv
+
+- src: geerlingguy.homebrew
+
+- src: avanov.pyenv

@@ -1,0 +1,30 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    - pyenv_root: "{{ ansible_env.HOME }}/.ghq/github.com/pyenv/pyenv"
+    - pyenv_virtualenv_rc_path: "{{ ansible_env.HOME }}/.bashrc"
+  roles:
+    - joshualund.golang
+    - geerlingguy.homebrew
+    - zzet.rbenv
+    - role: avanov.pyenv
+      pyenv_path: "{{ home }}/pyenv"
+      pyenv_owner: "{{ instance_owner }}"
+      pyenv_update_git_install: yes
+      pyenv_enable_autocompletion: yes
+      pyenv_python_versions:
+        - "2.7.10"
+      pyenv_virtualenvs:
+        - venv_name: "headspin"
+          py_version: "2.7.10"
+  tasks:
+    
+    - name: Check if Homebrew is installed
+      stat:
+        path: /usr/local/bin/brew
+      register: brew_exists
+    
+    - name: Install Homebrew
+      shell: yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      when: not brew_exists.stat.exists
